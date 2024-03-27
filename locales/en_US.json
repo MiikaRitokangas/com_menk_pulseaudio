@@ -1,0 +1,4 @@
+{
+    "plugin.name": "MicMute",
+    "actions.toggle-mute.name": "Toggle Microphone Mute"
+}
