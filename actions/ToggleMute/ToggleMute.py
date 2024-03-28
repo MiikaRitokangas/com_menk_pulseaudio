@@ -108,7 +108,7 @@ class ToggleMute(ActionBase):
 
     def get_config_rows(self) -> list:
         self.device_model = Gtk.ListStore.new([str, bool]) # First Column: Name, Second Column: IsAll
-        self.device_row = ComboRow(title="Microphone", model=self.device_model)
+        self.device_row = ComboRow(title=self.plugin_base.lm.get("actions.toggle-mute.device"), model=self.device_model)
 
         self.device_cell_renderer = Gtk.CellRendererText()
         self.device_row.combo_box.pack_start(self.device_cell_renderer, True)
@@ -124,7 +124,7 @@ class ToggleMute(ActionBase):
 
     def load_device_model(self):
         self.device_model.clear()
-        self.device_model.append(["All", True])
+        self.device_model.append([self.plugin_base.lm.get("actions.toggle-mute.all"), True])
         with pulsectl.Pulse('mute-microphone') as pulse:
             for source in pulse.source_list():
                 self.device_model.append([source.proplist.get("device.nick"), False])
