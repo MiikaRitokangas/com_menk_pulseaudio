@@ -2,5 +2,7 @@
     "version": "1.0.0",
     "thumbnail": "store/Thumbnail.png",
     "id": "com_core447_MicMute",
-    "name": "MicMute"
+    "name": "MicMute",
+    "description": "Mute your microphone",
+    "short-description": "Mute your microphone"
 }
