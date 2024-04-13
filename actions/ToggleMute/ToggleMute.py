@@ -22,6 +22,8 @@ class ToggleMute(ActionBase):
         super().__init__(action_id=action_id, action_name=action_name,
             deck_controller=deck_controller, page=page, coords=coords, plugin_base=plugin_base)
         
+        self.HAS_CONFIGURATION = True
+        
     def get_mute_state(self, device_nick: str = None) -> bool:
         """
         device_nick: str if None all microphones will be checked
