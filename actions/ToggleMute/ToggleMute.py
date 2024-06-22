@@ -20,7 +20,7 @@ class ToggleMute(ActionBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.HAS_CONFIGURATION = True
+        self.has_configuration = True
         
     def get_mute_state(self, device_nick: str = None) -> bool:
         """
