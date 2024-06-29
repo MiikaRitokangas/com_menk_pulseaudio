@@ -66,10 +66,16 @@ class ToggleMute(ActionBase):
             return
         
         if muted:
-            self.set_background_color(color=[255, 0, 0, 255])
+            try:
+                self.set_background_color(color=[255, 0, 0, 255])
+            except AttributeError: # bug in 1.5.0-beta.5
+                pass
             icon_name = "muted.png"
         else:
-            self.set_background_color(color=[0, 0, 0, 0])
+            try:
+                self.set_background_color(color=[0, 0, 0, 0])
+            except AttributeError: # bug in 1.5.0-beta.5
+                pass
             icon_name = "unmuted.png"
 
         icon_path = os.path.join(self.plugin_base.PATH, "assets", icon_name)
