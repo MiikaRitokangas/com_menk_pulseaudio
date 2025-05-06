@@ -17,7 +17,7 @@ class MicMutePlugin(PluginBase):
         self.toggle_mute_holder = ActionHolder(
             plugin_base = self,
             action_base = ToggleMute,
-            action_id_suffix = "ToggleMute", # Change this to your own plugin id
+            action_id_suffix = "ToggleMute_fix", # Change this to your own plugin id
             action_name = self.lm.get("actions.toggle-mute.name"),
             action_support={
                 Input.Key: ActionInputSupport.SUPPORTED,

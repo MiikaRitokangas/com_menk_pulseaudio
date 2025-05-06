@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "thumbnail": "store/Thumbnail.png",
-    "id": "com_core447_MicMute",
+    "id": "com_menk_MicMute",
     "name": "MicMute",
     "descriptions": {
         "en_US": "Mute your microphone."

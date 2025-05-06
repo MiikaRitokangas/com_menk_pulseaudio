@@ -39,7 +39,9 @@ class ToggleMute(ActionBase):
                 else:
                     all_muted = False
 
-                if device_nick is not None and source.proplist.get("device.nick") == device_nick:
+                # Check for device.nick first, then fall back to device.description
+                device_identifier = source.proplist.get("device.nick") or source.proplist.get("device.description")
+                if device_nick is not None and device_identifier == device_nick:
                     return muted
 
             if all_muted:
@@ -55,7 +57,9 @@ class ToggleMute(ActionBase):
         """
         with pulsectl.Pulse('mute-microphone') as pulse:
             for source in pulse.source_list():
-                if device_nick is not None and source.proplist.get("device.nick") != device_nick:
+                # Check for device.nick first, then fall back to device.description
+                device_identifier = source.proplist.get("device.nick") or source.proplist.get("device.description")
+                if device_nick is not None and device_identifier != device_nick:
                     continue
                 pulse.source_mute(source.index, state)
         
@@ -133,7 +137,9 @@ class ToggleMute(ActionBase):
         self.device_model.append([self.plugin_base.lm.get("actions.toggle-mute.all"), True])
         with pulsectl.Pulse('mute-microphone') as pulse:
             for source in pulse.source_list():
-                self.device_model.append([source.proplist.get("device.nick"), False])
+                # Check for device.nick first, then fall back to device.description
+                device_name = source.proplist.get("device.nick") or source.proplist.get("device.description")
+                self.device_model.append([device_name, False])
 
     def load_config_settings(self):
         settings = self.get_settings()
